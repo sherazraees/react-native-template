@@ -1,34 +1,23 @@
-import {View, Text, Button} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import MenuStackNavigator from './MenuNavigator';
+import {Home, Setting} from '../screens';
 
 const Tab = createBottomTabNavigator();
-export default TabNavigator = () => {
+
+export default TabNavigator = props => {
+  const hide = props.routeName != 'Profile';
   return (
     <Tab.Navigator screenOptions={{headerShown: false}}>
       <Tab.Screen options={{headerShown: false}} name="Home" component={Home} />
-      <Tab.Screen name="Settings" component={MenuStackNavigator} />
+      <Tab.Screen
+        name="Setting"
+        component={Setting}
+        // ------- Use this code to hide the tab bar
+        // options={{
+        //   headerShown: false,
+        //   tabBarStyle: {display: hide ? 'none' : 'flex'},
+        // }}
+      />
     </Tab.Navigator>
   );
 };
-
-function Home({navigation}) {
-  return (
-    <View>
-      <Text>Home hai bhae yeh</Text>
-    </View>
-  );
-}
-
-function Setting() {
-  return (
-    <View>
-      <Text>Setting</Text>
-      <Button
-        title="Go to CartScreen"
-        onPress={() => navigation.navigate('CartScreen')}
-      />
-    </View>
-  );
-}

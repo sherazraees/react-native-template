@@ -8,8 +8,10 @@ module.exports = {
           screens: './src/screens',
           components: './src/components',
           navigation: './src/navigation',
+          assets: './src/assets',
         },
       },
     ],
   ],
+  plugins: ['react-native-reanimated/plugin'],
 };
